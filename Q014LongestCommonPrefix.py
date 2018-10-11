@@ -4,18 +4,15 @@ class Solution:
         :type strs: List[str]
         :rtype: str
         """
-        commonPrefix = ''
         if len(strs) == 0:
             return ''
         length = len(strs[0])
         for i in range(length):
-            c = strs[0][i]
-            for j in range(len(strs)):
-                if  i >= len(strs [j]) or strs[j][i] != c:
-                    return commonPrefix
-            commonPrefix = commonPrefix + c
-        return commonPrefix
+            for string in strs[1:]:
+                if i >= len(string) or string[i] != strs[0][i]:
+                    return strs[0][:i]
+        return strs[0]
 
 
 if __name__ == '__main__':
-    print(Solution.longestCommonPrefix(Solution, [""]))
+    print(Solution().longestCommonPrefix(["flower","flow","flight"]))
