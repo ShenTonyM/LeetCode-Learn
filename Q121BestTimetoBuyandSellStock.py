@@ -28,5 +28,23 @@ class Solution:
         return bestProfit
 
 
+class Solution2:
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+
+        min_price = float('inf')
+        max_profit = float('-inf')
+
+        for price in prices:
+            min_price = min(min_price, price)
+            max_profit = max(price - min_price, max_profit)
+
+        return max_profit
+
+
+
 if __name__ == '__main__':
-    print(Solution().maxProfit([7,1,5,3,6,4]))
+    print(Solution2().maxProfit([7,1,5,3,6,4]))
