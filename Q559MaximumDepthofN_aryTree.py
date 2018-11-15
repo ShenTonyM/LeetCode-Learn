@@ -20,7 +20,3 @@ class Solution(object):
             if max_children < child_depth:
                 max_children = child_depth
         return max_children + 1
-
-
-
-
