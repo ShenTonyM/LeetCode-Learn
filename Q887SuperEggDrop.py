@@ -6,5 +6,7 @@ class Solution(object):
         :rtype: int
         """
 
+        """ Dynamic Programming """
+
 if __name__ == '__main__':
     print(Solution().superEggDrop())
