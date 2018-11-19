@@ -1,4 +1,4 @@
-class Solution:
+class Solution(object):
     def carFleet(self, target, position, speed):
         """
         :type target: int
@@ -6,30 +6,15 @@ class Solution:
         :type speed: List[int]
         :rtype: int
         """
-        cars = dict()
-
-        num = len(position)
-
-        count = 0
-        for i in range(num):
-            this_position = position[i]
-            this_speed = speed[i]
-            this_time = (target - this_position) / this_speed
-            flag = True
-            for element in cars:
-                if (cars[element]['position'] <= this_position and cars[element]['time'] <= this_time) \
-                        or (cars[element]['position'] >= this_position and cars[element]['time'] >= this_time):
-                    flag = False
-                    break
-            cars[i] = dict()
-            cars[i]['position'] = this_position
-            cars[i]['time'] = this_time
-
-            if flag:
-                count += 1
-            # print(cars)
-
-        return count
+        times = [float(target-p)/s for p, s in sorted(zip(position, speed))]
+        print([[p, s] for p, s in sorted(zip(position, speed))])
+        print(times)
+        result, curr = 0, 0
+        for t in reversed(times):
+            if t > curr:
+                result += 1
+                curr = t
+        return result
 
 if __name__ == '__main__':
     print(Solution().carFleet(10,[0,4,2],[2,1,3]))
