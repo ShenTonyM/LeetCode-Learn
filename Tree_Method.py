@@ -16,6 +16,7 @@ def buildTree(tree_data):
     :rtype: TreeNode
     """
 
+    # convert the list representation to TreeNode
     tree_node_list = []
     for i in range(len(tree_data)):
         if tree_data[i] != 'null':
