@@ -1,4 +1,5 @@
 from Tree_Method import buildTree
+from collections import deque
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, x):
@@ -12,6 +13,28 @@ class Solution:
         :type root: TreeNode
         :rtype: bool
         """
+
+        last_layer_flag = False
+
+        cur_layer = [root]
+
+        while cur_layer:
+            next_layer = []
+
+            for node in cur_layer:
+                if not node:
+                    last_layer_flag = True
+                    continue
+                if last_layer_flag:
+                    return False
+
+                next_layer.append(node.left)
+                next_layer.append(node.right)
+
+            cur_layer = next_layer
+        return True
+
+
 
 
 
