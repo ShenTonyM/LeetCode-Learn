@@ -1,1 +1,10 @@
-m={"$id":"1","neighbors":[{"$id":"2","neighbors":[{"$ref":"1"},{"$id":"3","neighbors":[{"$ref":"2"},{"$id":"4","neighbors":[{"$ref":"3"},{"$ref":"1"}],"val":4}],"val":3}],"val":2},{"$ref":"4"}],"val":1}
+if __name__ == '__main__':
+    n = int(input())
+    array = list(map(int, input().split(' ')))
+    if len(array) != n:
+        print(0)
+    if len(set(array)) <3:
+        print(-1)
+    else:
+        s = sorted(set(array))
+        print(s[2])
