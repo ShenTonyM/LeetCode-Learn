@@ -1,10 +1,31 @@
-if __name__ == '__main__':
-    n = int(input())
-    array = list(map(int, input().split(' ')))
-    if len(array) != n:
-        print(0)
-    if len(set(array)) <3:
-        print(-1)
-    else:
-        s = sorted(set(array))
-        print(s[2])
+""" quick sort """
+def partition(alist, start, end):
+    if end <= start:
+        return
+
+    # set pivot
+    pivot = alist[start]
+    left = start + 1
+    right = end
+    while True:
+        while left <= right and alist[left] <= pivot:
+            left = left + 1
+        while right >= left and alist[right] >= pivot:
+            right -= 1
+
+        # right meets left
+        if right <= left:
+            break
+
+        alist[left], alist[right] = alist[right], alist[left]
+
+    # 中间位置和pivot交换
+    alist[right], alist[start] = alist[start], alist[right]
+
+    partition(alist, start, right - 1)
+    partition(alist, right + 1, end)
+
+
+alist = [6,1,2,7,9,3,4,5,10,8]
+partition(alist,0,len(alist)-1)
+print(alist)
